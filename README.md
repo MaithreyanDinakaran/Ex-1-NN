@@ -1,6 +1,6 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
-<H3>EX. NO.1</H3>
+<H3>NAME: Maithreyan D</H3>
+<H3>REGISTER NO:212222220021</H3>
+<H3>EX. NO:1</H3>
 <H3>DATE</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
@@ -37,12 +37,55 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+```
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+df=pd.read_csv('Churn_Modelling.csv')
+print(df)
+df.head()
+df.tail()
+df.columns
+df.isnull().sum()
+df.duplicated()
+df.describe()
+data = df.drop(['Surname', 'Geography','Gender'], axis=1)
+data.head()
+scaler=MinMaxScaler()
+df1=pd.DataFrame(scaler.fit_transform(data))
+print(df1)
+X=df.iloc[:,:-1].values
+y=df.iloc[:,-1].values
+print(X)
+print(y)
+X_train ,X_test ,y_train,y_test=train_test_split(X,y,test_size=0.2)
+print("X_train\n")
+print(X_train)
+print("\nLenght of X_train ",len(X_train))
+print("\nX_test\n")
+print(X_test)
+print("\nLenght of X_test ",len(X_test))
+```
 
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
-
+## DATASET:
+![image](https://github.com/MaithreyanDinakaran/Ex-1-NN/assets/119104032/c21b4919-16e4-4829-bd46-5d4cb5e30c5a)
+## NULL VALUES:
+![image](https://github.com/MaithreyanDinakaran/Ex-1-NN/assets/119104032/f574a6dd-a155-4d7e-8a94-1d2456cf38f2)
+## Duplicate Values:
+![image](https://github.com/MaithreyanDinakaran/Ex-1-NN/assets/119104032/b00d01c2-cdd3-4d9f-90e5-d3714199bbb0)
+## Data after applying Min Max Scaling:
+![image](https://github.com/MaithreyanDinakaran/Ex-1-NN/assets/119104032/a7c271c8-6b30-461d-9a1b-e1b6a9fdfbfd)
+## Data Splitting:
+## x data
+![image](https://github.com/MaithreyanDinakaran/Ex-1-NN/assets/119104032/b9d05245-7829-498c-b300-ca40f1167a7e)
+## y data
+![image](https://github.com/MaithreyanDinakaran/Ex-1-NN/assets/119104032/8bfaa112-ccc7-448e-8d3b-248ca415c44c)
+## Train and Test Data:
+![image](https://github.com/MaithreyanDinakaran/Ex-1-NN/assets/119104032/b831f04b-2705-41ab-b9ec-208d2f211d94)
 
 ## RESULT:
 Thus, Implementation of Data Preprocessing is done in python  using a data set downloaded from Kaggle.
